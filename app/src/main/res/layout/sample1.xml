@@ -91,6 +91,7 @@
         </RelativeLayout>
     </LinearLayout>
 
+
     <TextView
         android:padding="10dp"
         android:background="@drawable/white"
@@ -100,3 +101,4 @@
         android:layout_height="match_parent" />
 
 </com.daimajia.swipe.SwipeLayout>
+

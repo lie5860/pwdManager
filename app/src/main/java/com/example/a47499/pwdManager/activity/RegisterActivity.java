@@ -1,4 +1,4 @@
-package com.example.a47499.pwdManager.Activity;
+package com.example.a47499.pwdManager.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,7 +14,7 @@ import android.view.animation.AccelerateInterpolator;
 
 import com.example.a47499.pwdManager.R;
 
-
+//注册界面
 public class RegisterActivity extends AppCompatActivity {
 
     private FloatingActionButton fab;

@@ -1,4 +1,4 @@
-package com.example.a47499.pwdManager.Activity;
+package com.example.a47499.pwdManager.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import com.example.a47499.pwdManager.R;
 import com.example.a47499.pwdManager.view.ColorAnimationView;
 
-
+//引导页面
 public class SampleActivity
 		extends FragmentActivity
 		 {

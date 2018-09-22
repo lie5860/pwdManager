@@ -9,33 +9,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--android:src="@drawable/content_films"-->
         <ImageView
             android:scaleType="fitXY"
             android:id="@+id/image_content"
-            android:src="@drawable/content_films"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+        <FrameLayout
+            android:layout_marginTop="56dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+
+
+            <ListView
+                android:id="@+id/contentListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/dialog"
+                android:layout_width="80.0dip"
+                android:layout_height="80.0dip"
+                android:layout_gravity="center"
+                android:background="#66ccff"
+                android:gravity="center"
+                android:textColor="#ffffffff"
+                android:textSize="30.0dip"
+                android:visibility="invisible" />
+            <com.example.a47499.pwdManager.weight.SideBar
+                android:id="@+id/sidrbar"
+                android:layout_width="30.0dip"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center" />
+
+        </FrameLayout>
     </FrameLayout>
-    <LinearLayout
-        android:layout_marginTop="70dp"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent"
-        android:padding="10dp">
 
-        <include android:id="@+id/sample1" layout="@layout/sample1"
-            android:layout_width="match_parent" android:layout_height="80dp"/>
-
-
-        <include android:id="@+id/sample2" layout="@layout/sample2"
-            android:layout_width="match_parent" android:layout_height="80dp"
-            android:layout_marginTop="20dp"/>
-
-        <include android:id="@+id/sample3" layout="@layout/sample3"
-            android:layout_width="match_parent" android:layout_height="80dp"
-            android:layout_marginTop="20dp"/>
-
-    </LinearLayout>
 </io.codetail.widget.RevealFrameLayout>

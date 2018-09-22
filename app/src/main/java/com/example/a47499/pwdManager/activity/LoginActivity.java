@@ -1,4 +1,4 @@
-package com.example.a47499.pwdManager.Activity;
+package com.example.a47499.pwdManager.activity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.a47499.pwdManager.MyActivity;
 import com.example.a47499.pwdManager.R;
 
 

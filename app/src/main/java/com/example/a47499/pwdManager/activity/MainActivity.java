@@ -1,20 +1,25 @@
-package com.example.a47499.pwdManager.Activity;
+package com.example.a47499.pwdManager.activity;
 
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.a47499.pwdManager.R;
+import com.example.a47499.pwdManager.bean.PwdModel;
 import com.example.a47499.pwdManager.fragment.ContentFragment;
 
 import java.util.ArrayList;
@@ -28,7 +33,7 @@ import yalantis.com.sidemenu.model.SlideMenuItem;
 import yalantis.com.sidemenu.util.ViewAnimator;
 
 
-
+//主界面
 public class MainActivity extends AppCompatActivity implements ViewAnimator.ViewAnimatorListener {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private ViewAnimator viewAnimator;
     private int res = R.drawable.content_music;
     private LinearLayout linearLayout;
+
+    SearchView searchView;
 
 
     @Override
@@ -72,14 +79,14 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         list.add(menuItem2);
         SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.PAINT, R.drawable.icn_3);
         list.add(menuItem3);
-        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.CASE, R.drawable.icn_4);
-        list.add(menuItem4);
-        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.SHOP, R.drawable.icn_5);
-        list.add(menuItem5);
-        SlideMenuItem menuItem6 = new SlideMenuItem(ContentFragment.PARTY, R.drawable.icn_6);
-        list.add(menuItem6);
-        SlideMenuItem menuItem7 = new SlideMenuItem(ContentFragment.MOVIE, R.drawable.icn_7);
-        list.add(menuItem7);
+//        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.CASE, R.drawable.icn_4);
+//        list.add(menuItem4);
+//        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.SHOP, R.drawable.icn_5);
+//        list.add(menuItem5);
+//        SlideMenuItem menuItem6 = new SlideMenuItem(ContentFragment.PARTY, R.drawable.icn_6);
+//        list.add(menuItem6);
+//        SlideMenuItem menuItem7 = new SlideMenuItem(ContentFragment.MOVIE, R.drawable.icn_7);
+//        list.add(menuItem7);
     }
 
 
@@ -133,8 +140,30 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+
+        //使用菜单填充器获取menu下的菜单资源文件
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        //获取搜索的菜单组件
+        MenuItem menuItem = menu.findItem(R.id.search);
+        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        //设置搜索的事件
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast t = Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT);
+                t.setGravity(Gravity.TOP,0,0);
+                t.show();
+                List<PwdModel> models = new ArrayList<>();
+                models.add(new PwdModel("ssss"+query));
+                contentFragment.myListViewAdapter.updateLV(models);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
