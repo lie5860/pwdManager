@@ -2,8 +2,10 @@ package com.example.a47499.pwdManager.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a47499.pwdManager.R;
 import com.example.a47499.pwdManager.adapter.MyListViewAdapter;
@@ -28,14 +31,6 @@ import yalantis.com.sidemenu.interfaces.ScreenShotable;
  * Created by Konstantin on 22.12.2014.
  */
 public class ContentFragment extends Fragment implements ScreenShotable {
-    public static final String CLOSE = "Close";
-    public static final String BUILDING = "Building";
-    public static final String BOOK = "Book";
-    public static final String PAINT = "Paint";
-    public static final String CASE = "Case";
-    public static final String SHOP = "Shop";
-    public static final String PARTY = "Party";
-    public static final String MOVIE = "Movie";
 
     private View containerView;
     protected ImageView mImageView;
@@ -46,6 +41,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     private SideBar sideBar;
     private TextView dialog;
     public MyListViewAdapter myListViewAdapter;
+    private FloatingActionButton floatingActionButton;
 //    private LinearLayout mainLayout;
 
     public static ContentFragment newInstance(int resId) {
@@ -65,8 +61,14 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         PinyinComparator pinyinComparator = new PinyinComparator();
         sideBar = (SideBar) getActivity().findViewById(R.id.sidrbar);
         dialog = (TextView) getActivity().findViewById(R.id.dialog);
+        floatingActionButton=getActivity().findViewById(R.id.fab);
 //        mainLayout=getActivity().findViewById(R.id.mainLayout);
-
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "add时间", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         List<PwdModel> models = new ArrayList<>();
         models.add(new PwdModel("ssss"));
@@ -103,32 +105,10 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     }
 
 
-    /*
-    Color transition method.
-     */
-    public Object evaluate(float fraction, Object startValue, Object endValue) {
-        int startInt = (Integer) startValue;
-        int startA = (startInt >> 24) & 0xff;
-        int startR = (startInt >> 16) & 0xff;
-        int startG = (startInt >> 8) & 0xff;
-        int startB = startInt & 0xff;
-
-        int endInt = (Integer) endValue;
-        int endA = (endInt >> 24) & 0xff;
-        int endR = (endInt >> 16) & 0xff;
-        int endG = (endInt >> 8) & 0xff;
-        int endB = endInt & 0xff;
-
-        return (int) ((startA + (int) (fraction * (endA - startA))) << 24) |
-                (int) ((startR + (int) (fraction * (endR - startR))) << 16) |
-                (int) ((startG + (int) (fraction * (endG - startG))) << 8) |
-                (int) ((startB + (int) (fraction * (endB - startB))));
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        res = getArguments().getInt(Integer.class.getName());
     }
 
     @Override
@@ -138,8 +118,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         mImageView = (ImageView) rootView.findViewById(R.id.image_content);
         mImageView.setClickable(true);
         mImageView.setFocusable(true);
-//        mImageView.setBackgroundColor(Color.RED);
-        mImageView.setImageResource(res);
+        mImageView.setBackgroundColor(Color.RED);
         return rootView;
     }
 

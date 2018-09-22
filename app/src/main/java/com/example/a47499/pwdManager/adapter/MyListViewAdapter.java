@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.example.a47499.pwdManager.R;
+import com.example.a47499.pwdManager.activity.MainActivity;
 import com.example.a47499.pwdManager.bean.PwdModel;
 import com.nineoldandroids.view.ViewHelper;
 
@@ -79,14 +80,14 @@ class MyListViewAdapter extends BaseAdapter implements SectionIndexer {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(context, "Click on surface", Toast.LENGTH_SHORT).show();
-                    Log.d(MyActivity.class.getName(), "click on surface");
+                    Log.d(MainActivity.class.getName(), "click on surface");
                 }
             });
             viewHolder.swipeLayout.getSurfaceView().setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     Toast.makeText(context, "longClick on surface", Toast.LENGTH_SHORT).show();
-                    Log.d(MyActivity.class.getName(), "longClick on surface");
+                    Log.d(MainActivity.class.getName(), "longClick on surface");
                     return true;
                 }
             });
@@ -138,7 +139,7 @@ class MyListViewAdapter extends BaseAdapter implements SectionIndexer {
         }else{
             viewHolder.tvLetter.setVisibility(View.GONE);
         }
-        viewHolder.tvTitle.setText(this.list.get(position).getProjectNmae());
+        viewHolder.tvTitle.setText(this.list.get(position).getProjectName());
 //        viewHolder.ivSrc.setImageResource(list.get(position).getSrcId());
 
         return view;
