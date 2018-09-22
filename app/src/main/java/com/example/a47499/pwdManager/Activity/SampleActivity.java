@@ -1,4 +1,4 @@
-package com.example.a47499.pwdManager;
+package com.example.a47499.pwdManager.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.example.a47499.pwdManager.R;
+import com.example.a47499.pwdManager.view.ColorAnimationView;
 
 
 public class SampleActivity
@@ -98,7 +101,7 @@ public class SampleActivity
 			imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getContext(),MainActivity.class));
+                    startActivity(new Intent(getContext(),LoginActivity.class));
                 }
             });
 			return imageView;

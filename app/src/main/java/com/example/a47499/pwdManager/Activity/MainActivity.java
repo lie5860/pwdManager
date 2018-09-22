@@ -1,4 +1,4 @@
-package com.example.a47499.pwdManager;
+package com.example.a47499.pwdManager.Activity;
 
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.LinearLayout;
 
+import com.example.a47499.pwdManager.R;
 import com.example.a47499.pwdManager.fragment.ContentFragment;
 
 import java.util.ArrayList;

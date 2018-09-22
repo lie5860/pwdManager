@@ -1,4 +1,4 @@
-package com.example.a47499.pwdManager;
+package com.example.a47499.pwdManager.view;
 
 import android.animation.Animator;
 import android.animation.ArgbEvaluator;
