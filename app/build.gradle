@@ -48,4 +48,5 @@ dependencies {
     compile project(path: ':sidemenu')
     compile project(path: ':library')
     compile files('libs/pinyin4j-2.5.0.jar')
+    compile 'com.github.sd6352051:NiftyDialogEffects:v1.0.3'
 }

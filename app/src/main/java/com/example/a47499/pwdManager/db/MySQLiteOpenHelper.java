@@ -92,7 +92,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         // 调用SQLiteDatabase对象的query方法进行查询
         // 返回一个Cursor对象：由数据库查询返回的结果集对象
         Cursor cursor = sqliteDatabase.query(tableName, new String[]{"id",
-                "name","pwd","projectName","userName"}, "projectName like ?", new String[]{"%" + condition + "%"}, null, null, null);
+                "name","pwd","projectName","userName","projectLetters"}, "projectName like ?", new String[]{"%" + condition + "%"}, null, null, null);
         List<PwdModel> list = new ArrayList<>();
         //将光标移动到下一行，从而判断该结果集是否还有下一条数据
         //如果有则返回true，没有则返回false

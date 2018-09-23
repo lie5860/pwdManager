@@ -45,20 +45,21 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/archive"
+                    android:id="@+id/cName"
                     android:textColor="#fff"
-                    android:text="Archive"
+                    android:text="复制帐号"
                     android:layout_weight="0.5"
                     android:gravity="center"
                     android:clickable="true"
-                    android:background="@drawable/red"
+                    android:background="#6cf"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
 
                 <TextView
-                    android:id="@+id/delete"
-                    android:text="Delete"
-                    android:background="#C7C7CC"
+                    android:id="@+id/cPwd"
+                    android:text="复制密码"
+                    android:textColor="#fff"
+                    android:background="#fc6"
                     android:gravity="center"
                     android:layout_weight="0.5"
                     android:layout_width="wrap_content"
@@ -71,14 +72,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/magnifier2"
-                    android:src="@drawable/magnifier"
-                    android:layout_width="70dp"
-                    android:background="#f7e79c"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="25dp"
-                    android:layout_height="match_parent" />
 
                 <ImageView
                     android:id="@+id/star2"

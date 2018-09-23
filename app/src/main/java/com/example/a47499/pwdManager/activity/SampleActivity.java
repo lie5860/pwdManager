@@ -14,7 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.a47499.pwdManager.MyApplication;
 import com.example.a47499.pwdManager.R;
+import com.example.a47499.pwdManager.bean.PwdModel;
+import com.example.a47499.pwdManager.db.MySQLiteOpenHelper;
 import com.example.a47499.pwdManager.view.ColorAnimationView;
 
 //引导页面
@@ -67,17 +70,17 @@ public class SampleActivity
 
         });
 
-//        MyApplication app = ((MyApplication) getApplication());
-//        MySQLiteOpenHelper dbHelper = app.getDbHelper();
-//        dbHelper.add(new PwdModel("aaaa"), app.getPwdTableName());
+        MyApplication app = ((MyApplication) getApplication());
+        MySQLiteOpenHelper dbHelper = app.getDbHelper();
+        dbHelper.add(new PwdModel("aaaa"), app.getPwdTableName());
+        System.out.println("---");
+        dbHelper.selectList(app.getPwdTableName(), "");
 //        System.out.println("---");
-//        dbHelper.selectList(app.getPwdTableName(), "");
-//        System.out.println("---");
-//        dbHelper.selectList(app.getPwdTableName(), "a");
+//        List<PwdModel> a = (List<PwdModel>) dbHelper.selectList(app.getPwdTableName(), "a");
 //        System.out.println("---");
 //        dbHelper.selectList(app.getPwdTableName(), "b");
 //        PwdModel pwdModel = new PwdModel("ccc");
-//        pwdModel.setId(2);
+//        pwdModel.setId(a.get(0).getId());
 //        dbHelper.update(pwdModel, app.getPwdTableName());
 //        System.out.println("---");
 //        dbHelper.selectList(app.getPwdTableName(), "");

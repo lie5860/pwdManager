@@ -15,13 +15,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a47499.pwdManager.MyApplication;
 import com.example.a47499.pwdManager.R;
 import com.example.a47499.pwdManager.adapter.MyListViewAdapter;
 import com.example.a47499.pwdManager.bean.PwdModel;
+import com.example.a47499.pwdManager.db.MySQLiteOpenHelper;
 import com.example.a47499.pwdManager.utils.PinyinComparator;
 import com.example.a47499.pwdManager.weight.SideBar;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -61,28 +63,23 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         PinyinComparator pinyinComparator = new PinyinComparator();
         sideBar = (SideBar) getActivity().findViewById(R.id.sidrbar);
         dialog = (TextView) getActivity().findViewById(R.id.dialog);
-        floatingActionButton=getActivity().findViewById(R.id.fab);
+        floatingActionButton = getActivity().findViewById(R.id.fab);
 //        mainLayout=getActivity().findViewById(R.id.mainLayout);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "add时间", Toast.LENGTH_SHORT).show();
+                NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(getContext());
+
+                dialogBuilder
+                        .withTitle("Modal Dialog")
+                        .withMessage("This is a modal Dialog.")
+                        .show();
             }
         });
-
-        List<PwdModel> models = new ArrayList<>();
-        models.add(new PwdModel("ssss"));
-        models.add(new PwdModel("刷刷刷"));
-        models.add(new PwdModel("ccc"));
-        models.add(new PwdModel("次奥"));
-        models.add(new PwdModel("aaaa"));
-        models.add(new PwdModel("安安"));
-        models.add(new PwdModel("ssss"));
-        models.add(new PwdModel("刷刷刷"));
-        models.add(new PwdModel("ccc"));
-        models.add(new PwdModel("次奥"));
-        models.add(new PwdModel("aaaa"));
-        models.add(new PwdModel("安安"));
+        MyApplication app = (MyApplication) getActivity().getApplication();
+        MySQLiteOpenHelper dbHelper = app.getDbHelper();
+        List<PwdModel> models = (List<PwdModel>) dbHelper.selectList(app.getPwdTableName(), "");
         myListViewAdapter = new MyListViewAdapter(getContext(), models);
         Collections.sort(models, pinyinComparator);
         contentListView.setAdapter(myListViewAdapter);
@@ -103,7 +100,6 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         });
 
     }
-
 
 
     @Override
