@@ -10,118 +10,123 @@
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:layout_weight="1.0"
+        android:background="#E0E0E0"
         android:paddingBottom="5dip"
         android:paddingLeft="10dip"
         android:paddingTop="5dip"
         android:text="A"
-        android:background="#E0E0E0"
         android:textColor="#454545" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <!--<ImageView-->
-            <!--android:id="@+id/item_iv"-->
-            <!--android:src="@mipmap/ic_launcher"-->
-            <!--android:layout_width="30dp"-->
-            <!--android:layout_height="30dp" />-->
+        <!--android:id="@+id/item_iv"-->
+        <!--android:src="@mipmap/ic_launcher"-->
+        <!--android:layout_width="30dp"-->
+        <!--android:layout_height="30dp" />-->
 
-        <com.daimajia.swipe.SwipeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/list_item"
             android:layout_width="match_parent"
-            android:id="@+id/sample1"
             android:layout_height="80dp"
             app:clickToClose="true">
 
             <LinearLayout
-                android:tag="Bottom1"
-                android:background="#66ddff00"
                 android:id="@+id/bottom_wrapper"
                 android:layout_width="160dp"
-                android:weightSum="1"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#66ddff00"
+                android:tag="Bottom1"
+                android:weightSum="1">
 
                 <TextView
                     android:id="@+id/cName"
-                    android:textColor="#fff"
-                    android:text="复制帐号"
-                    android:layout_weight="0.5"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:background="#6cf"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="#6cf"
+                    android:clickable="true"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:text="复制\n帐号"
+                    android:textColor="#fff" />
 
                 <TextView
                     android:id="@+id/cPwd"
-                    android:text="复制密码"
-                    android:textColor="#fff"
-                    android:background="#fc6"
-                    android:gravity="center"
-                    android:layout_weight="0.5"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="#fc6"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:text="复制\n密码"
+                    android:textColor="#fff" />
             </LinearLayout>
 
             <LinearLayout
-                android:tag="Bottom4"
                 android:id="@+id/bottom_wrapper_2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:tag="Bottom4">
 
 
                 <ImageView
                     android:id="@+id/star2"
-                    android:src="@drawable/star"
                     android:layout_width="70dp"
+                    android:layout_height="match_parent"
                     android:background="#4cd964"
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
-                    android:layout_height="match_parent" />
+                    android:src="@drawable/star" />
 
                 <ImageView
                     android:id="@+id/trash2"
-                    android:src="@drawable/trash"
                     android:layout_width="70dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/red"
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
-                    android:layout_height="match_parent" />
+                    android:src="@drawable/trash" />
             </LinearLayout>
 
             <LinearLayout
-                android:tag="Bottom3"
                 android:id="@+id/starbott"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:tag="Bottom3">
+
                 <RelativeLayout
                     android:id="@+id/bottom_wrapper_child1"
-                    android:background="@drawable/dark_gray"
-                    android:clickable="true"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/dark_gray"
+                    android:clickable="true">
+
                     <ImageView
                         android:id="@+id/star"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/star"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp" />
+                        android:src="@drawable/star" />
                 </RelativeLayout>
             </LinearLayout>
 
 
             <TextView
                 android:id="@+id/title"
-                android:padding="10dp"
-                android:background="@drawable/white"
-                android:tag="Hover"
-                android:text="要有最樸素的生活和最遙遠的夢想，即使明天天寒地凍，山高水遠，路遠馬亡。"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@drawable/white"
+                android:padding="10dp"
+                android:textSize="30sp"
+                android:tag="Hover"
+                android:gravity="center_vertical"
+                android:text="试试" />
 
         </com.daimajia.swipe.SwipeLayout>
 

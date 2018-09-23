@@ -2,7 +2,6 @@ package com.example.a47499.pwdManager.fragment;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -13,16 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.a47499.pwdManager.MyApplication;
 import com.example.a47499.pwdManager.R;
 import com.example.a47499.pwdManager.adapter.MyListViewAdapter;
 import com.example.a47499.pwdManager.bean.PwdModel;
 import com.example.a47499.pwdManager.db.MySQLiteOpenHelper;
+import com.example.a47499.pwdManager.utils.MyDialog;
 import com.example.a47499.pwdManager.utils.PinyinComparator;
 import com.example.a47499.pwdManager.weight.SideBar;
-import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -38,7 +36,8 @@ public class ContentFragment extends Fragment implements ScreenShotable {
     protected ImageView mImageView;
     protected int res;
     private Bitmap bitmap;
-
+    private MyApplication app;
+    private MySQLiteOpenHelper dbHelper;
     private ListView contentListView;
     private SideBar sideBar;
     private TextView dialog;
@@ -65,22 +64,19 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         dialog = (TextView) getActivity().findViewById(R.id.dialog);
         floatingActionButton = getActivity().findViewById(R.id.fab);
 //        mainLayout=getActivity().findViewById(R.id.mainLayout);
+        app = ((MyApplication) getActivity().getApplication());
+        dbHelper = app.getDbHelper();
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "add时间", Toast.LENGTH_SHORT).show();
-                NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(getContext());
-
-                dialogBuilder
-                        .withTitle("Modal Dialog")
-                        .withMessage("This is a modal Dialog.")
-                        .show();
+                MyDialog.getInstance(getContext()).show();
             }
         });
         MyApplication app = (MyApplication) getActivity().getApplication();
         MySQLiteOpenHelper dbHelper = app.getDbHelper();
         List<PwdModel> models = (List<PwdModel>) dbHelper.selectList(app.getPwdTableName(), "");
         myListViewAdapter = new MyListViewAdapter(getContext(), models);
+        app.setAdapter(myListViewAdapter);
         Collections.sort(models, pinyinComparator);
         contentListView.setAdapter(myListViewAdapter);
         sideBar.setTextView(dialog);
@@ -114,7 +110,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         mImageView = (ImageView) rootView.findViewById(R.id.image_content);
         mImageView.setClickable(true);
         mImageView.setFocusable(true);
-        mImageView.setBackgroundColor(Color.RED);
+//        mImageView.setBackgroundColor(Color.RED);
         return rootView;
     }
 

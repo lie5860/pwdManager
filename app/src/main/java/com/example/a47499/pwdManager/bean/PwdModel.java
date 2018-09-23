@@ -3,7 +3,8 @@ package com.example.a47499.pwdManager.bean;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.example.a47499.pwdManager.utils.CharacterParser;
+import com.example.a47499.pwdManager.utils.StringUtils;
+
 
 /**
  * Created by 47499 on 2018/9/22.
@@ -44,10 +45,24 @@ public class PwdModel extends Object {
         this.userName = userName;
     }
 
+    public PwdModel(String projectName, String name, String pwd) {
+        this.name = name;
+        this.pwd = pwd;
+        this.projectName = projectName;
+        if (StringUtils.cn2FirstSpell(projectName).length() > 0) {
+            this.projectLetters = String.valueOf(StringUtils.cn2FirstSpell(projectName).charAt(0));
+        } else {
+            this.projectLetters = "特殊符号";
+        }
+    }
 
     public PwdModel(String projectName) {
         this.projectName = projectName;
-        this.projectLetters = String.valueOf(CharacterParser.cn2FirstSpell(projectName).charAt(0));
+        if (StringUtils.cn2FirstSpell(projectName).length() > 0) {
+            this.projectLetters = String.valueOf(StringUtils.cn2FirstSpell(projectName).charAt(0));
+        } else {
+            this.projectLetters = "特殊符号";
+        }
     }
 
 
