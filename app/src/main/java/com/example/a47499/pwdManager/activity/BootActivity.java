@@ -19,11 +19,11 @@ import com.example.a47499.pwdManager.R;
 import com.example.a47499.pwdManager.view.ColorAnimationView;
 
 //引导页面
-public class SampleActivity
+public class BootActivity
         extends FragmentActivity {
-    private static final int[] resource = new int[]{R.drawable.welcome1, R.drawable.welcome4,
-            R.drawable.welcome3, R.drawable.welcome4};
-    private static final String TAG = SampleActivity.class.getSimpleName();
+    private static final int[] resource = new int[]{R.drawable.ic_launcher, R.drawable.ic_launcher,
+            R.drawable.ic_launcher, R.drawable.ic_launcher};
+    private static final String TAG = BootActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,22 +69,6 @@ public class SampleActivity
         });
 
         MyApplication app = ((MyApplication) getApplication());
-//        MySQLiteOpenHelper dbHelper = app.getDbHelper();
-//        dbHelper.add(new PwdModel("aaaa"), app.getPwdTableName());
-//        System.out.println("---");
-//        dbHelper.selectList(app.getPwdTableName(), "");
-//        System.out.println("---");
-//        List<PwdModel> a = (List<PwdModel>) dbHelper.selectList(app.getPwdTableName(), "a");
-//        System.out.println("---");
-//        dbHelper.selectList(app.getPwdTableName(), "b");
-//        PwdModel pwdModel = new PwdModel("ccc");
-//        pwdModel.setId(a.get(0).getId());
-//        dbHelper.update(pwdModel, app.getPwdTableName());
-//        System.out.println("---");
-//        dbHelper.selectList(app.getPwdTableName(), "");
-//        dbHelper.delete(pwdModel, app.getPwdTableName());
-//        System.out.println("---");
-//        dbHelper.selectList(app.getPwdTableName(), "");
     }
 
 

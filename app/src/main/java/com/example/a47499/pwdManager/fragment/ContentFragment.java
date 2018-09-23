@@ -1,5 +1,6 @@
 package com.example.a47499.pwdManager.fragment;
 
+import android.animation.Animator;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import com.example.a47499.pwdManager.R;
 import com.example.a47499.pwdManager.adapter.MyListViewAdapter;
 import com.example.a47499.pwdManager.bean.PwdModel;
 import com.example.a47499.pwdManager.db.MySQLiteOpenHelper;
+import com.example.a47499.pwdManager.utils.AnimatorUtil;
 import com.example.a47499.pwdManager.utils.MyDialog;
 import com.example.a47499.pwdManager.utils.PinyinComparator;
 import com.example.a47499.pwdManager.weight.SideBar;
@@ -53,6 +56,13 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         return contentFragment;
     }
 
+    private int mTouchShop;//最小滑动距离
+    protected float mFirstY;//触摸下去的位置
+    protected float mCurrentY;//滑动时Y的位置
+    protected int direction;//判断是否上滑或者下滑的标志
+
+    protected boolean mShow;//判断是否执行了上滑动画
+    private Animator mAnimator;//动画属性
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -63,6 +73,45 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         sideBar = (SideBar) getActivity().findViewById(R.id.sidrbar);
         dialog = (TextView) getActivity().findViewById(R.id.dialog);
         floatingActionButton = getActivity().findViewById(R.id.fab);
+
+        contentListView.setOnTouchListener(new View.OnTouchListener() {//listview的触摸事件
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mFirstY = event.getY();//按下时获取位置
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        mCurrentY = event.getY();//得到滑动的位置
+                        if (mCurrentY - mFirstY > mTouchShop) {//滑动的位置减去按下的位置大于最小滑动距离  则表示向下滑动
+                            direction = 0;//down
+                        } else if (mFirstY - mCurrentY > mTouchShop) {//反之向上滑动
+                            direction = 1;//up
+                        }
+
+                        if (direction == 1) {//判断如果是向上滑动 则执行向上滑动的动画
+                            if (mShow) {//判断动画是否执行了  执行了则改变状态
+                                //执行往上滑动的动画
+                                AnimatorUtil.hideFab(floatingActionButton);
+                                mShow = !mShow;
+                            }
+                        } else if (direction == 0) {//判断如果是向下滑动 则执行向下滑动的动画
+                            if (!mShow) {//判断动画是否执行了  执行了则改变状态
+                                //执行往下滑动的动画
+                                AnimatorUtil.showFab(floatingActionButton);
+                                mShow = !mShow;
+                            }
+                        }
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        break;
+
+                }
+                return false;
+            }
+        });
 //        mainLayout=getActivity().findViewById(R.id.mainLayout);
         app = ((MyApplication) getActivity().getApplication());
         dbHelper = app.getDbHelper();
@@ -110,6 +159,7 @@ public class ContentFragment extends Fragment implements ScreenShotable {
         mImageView = (ImageView) rootView.findViewById(R.id.image_content);
         mImageView.setClickable(true);
         mImageView.setFocusable(true);
+
 //        mImageView.setBackgroundColor(Color.RED);
         return rootView;
     }

@@ -49,7 +49,7 @@ public class PwdModel extends Object {
         this.name = name;
         this.pwd = pwd;
         this.projectName = projectName;
-        if (StringUtils.cn2FirstSpell(projectName).length() > 0) {
+        if (!StringUtils.cn2FirstSpell(projectName).equals("")) {
             this.projectLetters = String.valueOf(StringUtils.cn2FirstSpell(projectName).charAt(0));
         } else {
             this.projectLetters = "特殊符号";
@@ -58,7 +58,7 @@ public class PwdModel extends Object {
 
     public PwdModel(String projectName) {
         this.projectName = projectName;
-        if (StringUtils.cn2FirstSpell(projectName).length() > 0) {
+        if (!StringUtils.cn2FirstSpell(projectName).equals("")) {
             this.projectLetters = String.valueOf(StringUtils.cn2FirstSpell(projectName).charAt(0));
         } else {
             this.projectLetters = "特殊符号";

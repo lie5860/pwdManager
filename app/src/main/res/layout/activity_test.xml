@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请输入密码"
+        android:padding="10dp"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="50sp" />
+
+    <com.example.a47499.pwdManager.view.NumLockPanel
+        android:id="@+id/num_lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center">
+
+    </com.example.a47499.pwdManager.view.NumLockPanel>
+</LinearLayout>
