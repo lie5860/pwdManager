@@ -21,7 +21,7 @@ import com.example.a47499.pwdManager.adapter.MyListViewAdapter;
 import com.example.a47499.pwdManager.bean.PwdModel;
 import com.example.a47499.pwdManager.db.MySQLiteOpenHelper;
 import com.example.a47499.pwdManager.utils.AnimatorUtil;
-import com.example.a47499.pwdManager.utils.MyDialog;
+import com.example.a47499.pwdManager.view.MyDialog;
 import com.example.a47499.pwdManager.utils.PinyinComparator;
 import com.example.a47499.pwdManager.weight.SideBar;
 

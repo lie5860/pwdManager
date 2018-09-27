@@ -19,6 +19,7 @@ import com.example.a47499.pwdManager.activity.MainActivity;
 import com.example.a47499.pwdManager.bean.PwdModel;
 import com.example.a47499.pwdManager.db.MySQLiteOpenHelper;
 import com.example.a47499.pwdManager.utils.PinyinComparator;
+import com.example.a47499.pwdManager.view.MyDialog;
 
 import java.util.Collections;
 import java.util.List;
@@ -99,7 +100,7 @@ public class MyListViewAdapter extends BaseAdapter implements SectionIndexer {
         viewHolder.swipeLayout.getSurfaceView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "单击事件", Toast.LENGTH_SHORT).show();
+                MyDialog.getInstance(context,list.get(position)).withTitle("编辑账号").show();
                 Log.d(MainActivity.class.getName(), "单击事件");
             }
         });
